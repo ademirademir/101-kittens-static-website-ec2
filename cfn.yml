@@ -9,18 +9,19 @@ Resources:
     Properties:
       ImageId: ami-01c647eace872fc02
       InstanceType: t2.micro
-      KeyName: ottoaws9
+      KeyName: firstkey
       SecurityGroupIds: 
         - !Ref MySecGrp
       Tags: 
         - Key: Name
-          Value: !Sub Osvaldo ${AWS::StackName}
+          Value: !Sub ahmet ${AWS::StackName}
       UserData:
         Fn::Base64: |
             #! /bin/bash
             yum update -y
             yum install httpd -y
-            FOLDER="
+            FOLDER="https://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
+@raw.githubusercontent.com/ademirademir/101-kittens-static-website-ec2/main/static-web/index.html
             cd /var/www/html
             wget ${FOLDER}/index.html
             wget ${FOLDER}/cat0.jpg
@@ -34,7 +35,7 @@ Resources:
     Type: AWS::EC2::SecurityGroup
     Properties:
       GroupDescription: ssh and http # Required
-      GroupName: osvaldosecportfolio
+      GroupName: ahmetsecportfolio
       SecurityGroupIngress:
         - IpProtocol: tcp
           FromPort: 22
